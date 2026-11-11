@@ -1,0 +1,195 @@
+/* ---------- Palette ---------- */
+:root {
+  --bg: #fbf6ee;        /* cream */
+  --surface: #fffaf3;
+  --text: #3b322c;      /* warm brown-gray */
+  --muted: #6b5d52;
+  --accent: #a4502f;    /* muted terracotta */
+  --border: #d9c8b4;
+  --nav-h: 3.25rem;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1b18;      /* warm charcoal */
+    --surface: #2a2420;
+    --text: #efe6dc;
+    --muted: #bfb0a2;
+    --accent: #e59a77;  /* lightened terracotta */
+    --border: #4a3f37;
+  }
+}
+
+/* The nav wraps onto two or more lines on narrow screens */
+@media (max-width: 600px) {
+  :root { --nav-h: 5.5rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Keep anchor jumps and keyboard-focused elements clear of the sticky nav */
+html { scroll-padding-top: calc(var(--nav-h) + 1rem); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
+}
+
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.site-header { padding-block: 3rem 1.5rem; }
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-nav ul {
+  list-style: none;
+  margin-block: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  padding-block: 0.75rem;
+}
+
+section { padding-block: 2rem; }
+
+.site-footer {
+  padding-block: 2rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Text & links ---------- */
+h2 {
+  font-size: 1.75rem;
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px dashed var(--border); /* running stitch */
+}
+
+h3 { font-size: 1.2rem; margin: 0.5rem 0 0.25rem; }
+
+.lede { font-size: 1.15rem; color: var(--muted); }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.site-nav a { font-weight: 600; text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; }
+
+/* ---------- Tools ---------- */
+.checklist { padding-left: 1.25rem; }
+.checklist li { margin-block: 0.4rem; }
+.checklist li::marker { color: var(--accent); }
+
+/* ---------- Yarn table ---------- */
+.table-scroll {
+  overflow-x: auto;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  margin-block: 1.25rem;
+}
+
+table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+caption {
+  text-align: left;
+  padding: 0.75rem 1rem 0.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+tbody tr:last-child td { border-bottom: 0; }
+th { font-weight: 700; }
+.alias { display: block; color: var(--muted); font-size: 0.85rem; }
+
+/* ---------- Callouts ---------- */
+.tip, .warning {
+  border: 2px dashed var(--accent);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 0.25rem 1.25rem;
+  margin-block: 1.25rem;
+}
+
+/* ---------- Stitch cards ---------- */
+.stitch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.stitch-card {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+}
+.stitch-card svg { display: block; color: var(--text); }
+.stitch-card p { margin: 0.4rem 0; }
+.abbr { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- Glossary ---------- */
+.glossary {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1.25rem;
+}
+.glossary dt { font-weight: 700; color: var(--accent); }
+.glossary dd { margin: 0; }
+
+/* ---------- Resources ---------- */
+.resource-group { padding-block: 0.5rem; }
+.resource-group ul { padding-left: 1.25rem; }
+.resource-group li { margin-block: 0.5rem; }
+
+.site-footer { border-top: 2px dashed var(--border); }
